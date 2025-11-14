@@ -40,7 +40,7 @@ def encode_documents(docs, batch_size: int = 64):
         batch = docs[i:i + batch_size]
         emb = model.encode(
             batch,
-            normalize_embeddings=True,      # recommended for BGE
+            normalize_embeddings=True,      
             show_progress_bar=False,
         )
         emb = emb.astype("float32")         # FAISS expects float32
@@ -64,9 +64,9 @@ def save_preprocessed(doc_ids, docs, embeddings, output_path: str):
     data = []
     for doc_id, text, emb in zip(doc_ids, docs, embeddings):
         item = {
-            "id": doc_id,                  # keep original id from dataset
+            "id": doc_id,                  
             "text": text,
-            "embedding": emb.tolist(),     # numpy -> Python list
+            "embedding": emb.tolist(),     
         }
         data.append(item)
 
